@@ -1,0 +1,11 @@
+{
+  "name": "github-action-fs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Nasim043/github-action-fs.git",
+  "author": "Nasim <nasimcse16@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
