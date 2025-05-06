@@ -2,7 +2,8 @@ name: Cron Workflow
 
 on:
   schedule:
-    - cron: "*/5 * * * *" # runs in every 5 minutes
+    # - cron: "*/5 * * * *" # runs in every 5 minutes
+    - cron: "0 0 * * *"  # runs once a day at midnight UTC
 
 jobs:
   cron-workflow:
