@@ -1,0 +1,39 @@
+# Name of the GitHub Actions workflow (visible in GitHub UI)
+name: Value Pass Workflow
+
+# Trigger the workflow manually from the GitHub Actions tab
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Enter your name'     # Input prompt shown in the UI
+        required: true                     # Must provide a value before running
+        default: 'Unnamed'                 # Default value if user leaves it blank
+
+# First job: Accepts the input and generates a message
+jobs:
+  get-value-workflow-job:
+    runs-on: ubuntu-latest                # Uses a virtual Ubuntu runner
+
+    # Define output from this job to be used in another job
+    outputs:
+      greetings_message: ${{ steps.generate-message.outputs.message }}
+
+    steps:
+      - name: Generate Greetings Message
+        id: generate-message              # Step ID for referencing its outputs
+        run: |
+          # Create a message using the user input
+          echo "message=Hello, ${{ github.event.inputs.name }}!" >> $GITHUB_OUTPUT
+          # This sets the output variable `message` for this step
+
+# Second job: Prints the message from the first job
+  print-value-workflow-job:
+    runs-on: ubuntu-latest
+    needs: [get-value-workflow-job]       # This job depends on the first one finishing
+
+    steps:
+      - name: Print Greetings Message
+        run: |
+          # Access and print the message output from the first job
+          echo "${{ needs.get-value-workflow-job.outputs.greetings_message }}"
