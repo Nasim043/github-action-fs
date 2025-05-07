@@ -1,3 +1,5 @@
+# matrix is a way to run the same job multiple 
+# times with different inputs
 name: Simple Matrix Workflow
 
 on:
@@ -18,4 +20,3 @@ jobs:
           echo "Fruit: ${{ matrix.fruit }}"
           echo "Color: ${{ matrix.color }}"
           echo "Fruit and Color: ${{ matrix.fruit }} and ${{ matrix.color }}"
-          
