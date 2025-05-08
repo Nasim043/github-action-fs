@@ -3,13 +3,8 @@ name: Conditional Workflow
 on:
   push:
     paths:
-      - 'backend/**'
+      - "backend/**"
 
 jobs:
   conditional-workflow-job:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Conditional Workflow Job
-        run: |
-          echo "Buiulding Backend Images!"
+    uses: nasim043/github-action-fs/.github/workflows/11-reusable-workflow.yml@main

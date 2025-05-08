@@ -1,0 +1,20 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+
+jobs:
+  reusable-workflow-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Image Building
+        run: |
+          echo "Docker Image Build!"
+    
+      - name: Image Push
+        run: |
+          echo "Docker Image Push!"
